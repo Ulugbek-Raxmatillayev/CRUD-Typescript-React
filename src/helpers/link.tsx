@@ -1,0 +1,1 @@
+export const link: string = 'http://161.35.214.247:8090/'
