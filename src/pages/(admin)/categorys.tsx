@@ -10,7 +10,9 @@ import { AxiosError } from 'axios'
 const AdminCategory = () => {
   const [categorys, setCategories] = useState<adminCategoryType[] | null>([])
   const [selected, setSelected] = useState<null>(null)
- 
+  const [isDelete,setIsDelete] = useState<boolean>(false)
+  const [isEdit,setIsEdit] = useState<boolean>(false)
+  const [isAdd,setIsAdd] = useState<boolean>(false)
   const name = useRef<adminCategoryType["name"]>('')
   const desc = useRef<adminCategoryType["description"]>('')
 
@@ -65,7 +67,7 @@ const AdminCategory = () => {
     const editData: adminCategoryType = {
       "name": name.current.value,
       "description": desc.current.value,
-      "fileId": null
+      "fileId": 0
     }
 
     axios.put(`${link}category/update/${id}?productUnits=KG`, editData, config)
